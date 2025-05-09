@@ -2,10 +2,22 @@ import OpenAI from "@openai/openai";
 import { blue, green, red, yellow } from "https://deno.land/std@0.220.1/fmt/colors.ts";
 import { parseArgs } from "https://deno.land/std@0.220.1/cli/parse_args.ts";
 
+const DEFAULT_MODEL = "microsoft/phi-3-mini-128k-instruct";
+
 const client = new OpenAI({
     baseURL: 'https://openrouter.ai/api/v1',
     apiKey: Deno.env.get('OPENROUTER_API_KEY'),
 });
+
+function printHelp() {
+    console.log(blue("\nUsage: ai [options] <query>"));
+    console.log("\nOptions:");
+    console.log("  --model <model>    Set the OpenRouter model to use");
+    console.log("  --help            Show this help message");
+    console.log("\nExamples:");
+    console.log("  ai 'find all PDF files'");
+    console.log("  ai --model 'mistralai/mistral-7b-instruct-v0.2' 'list all images'");
+}
 
 async function getOSInfo(): Promise<string> {
     const os = Deno.build.os;
@@ -76,9 +88,18 @@ async function copyToClipboard(text: string): Promise<boolean> {
 async function main(): Promise<void> {
     // Parse command line arguments
     const flags = parseArgs(Deno.args, {
-        string: ["query"],
-        default: { query: "" },
+        string: ["query", "model"],
+        boolean: ["help"],
+        default: {
+            query: "",
+            model: DEFAULT_MODEL
+        },
     });
+
+    if (flags.help) {
+        printHelp();
+        return;
+    }
 
     const userQuery = flags.query || flags._.join(" ");
 
@@ -91,7 +112,7 @@ async function main(): Promise<void> {
     const osInfo = await getOSInfo();
 
     const completion = await client.chat.completions.create({
-        model: 'microsoft/phi-3-mini-128k-instruct',
+        model: flags.model,
         temperature: 0.0,
         messages: [
             {
