@@ -1,0 +1,31 @@
+{
+  "version": "5",
+  "specifiers": {
+    "jsr:@openai/openai@^4.98.0": "4.98.0",
+    "npm:zod@3": "3.24.4"
+  },
+  "jsr": {
+    "@openai/openai@4.98.0": {
+      "integrity": "c3f1b428c2529713f20d5f66b34eea9f9e2d3f5822f12a84ff561b4b80ecbc9f",
+      "dependencies": [
+        "npm:zod"
+      ]
+    }
+  },
+  "npm": {
+    "zod@3.24.4": {
+      "integrity": "sha512-OdqJE9UDRPwWsrHjLN2F8bPxvwJBK22EHLWtanu0LSYr5YqzsaaW3RMgmjwr8Rypg5k+meEJdSPXJZXE/yqOMg=="
+    }
+  },
+  "remote": {
+    "https://deno.land/std@0.220.1/assert/assert_exists.ts": "24a7bf965e634f909242cd09fbaf38bde6b791128ece08e33ab08586a7cc55c9",
+    "https://deno.land/std@0.220.1/assert/assertion_error.ts": "9f689a101ee586c4ce92f52fa7ddd362e86434ffdf1f848e45987dc7689976b8",
+    "https://deno.land/std@0.220.1/cli/parse_args.ts": "a9e4ae8dbd0a96ad974d2f645af8143433103a17161a73dd5c2a03517bf6429d",
+    "https://deno.land/std@0.220.1/fmt/colors.ts": "d239d84620b921ea520125d778947881f62c50e78deef2657073840b8af9559a"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@openai/openai@^4.98.0"
+    ]
+  }
+}
