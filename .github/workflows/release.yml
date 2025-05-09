@@ -2,8 +2,6 @@ name: Release
 
 on:
   push:
-    tags:
-      - 'v*'
 
 jobs:
   build:
@@ -21,7 +19,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
