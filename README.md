@@ -1,6 +1,6 @@
 # AI Command Generator
 
-A command-line tool that uses AI to generate shell commands from natural language descriptions. Built with Deno and OpenRouter.
+A command-line tool that uses AI to generate shell commands from natural language descriptions.
 
 ## Features
 
@@ -13,7 +13,6 @@ A command-line tool that uses AI to generate shell commands from natural languag
 
 ## Prerequisites
 
-- [Deno](https://deno.land/) installed
 - OpenRouter API key
 
 ## Installation

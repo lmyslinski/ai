@@ -25,11 +25,11 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.3.1
 
       - name: Build
         run: |
-          deno compile --allow-read --allow-run --allow-net --allow-env --unstable main.ts --output ${{ matrix.artifact_name }}
+          deno compile --allow-read --allow-run --allow-net --allow-env main.ts --output ${{ matrix.artifact_name }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
